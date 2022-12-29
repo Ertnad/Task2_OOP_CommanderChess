@@ -24,9 +24,9 @@ public class Militia extends Chessman {
 	
 	public ArrayList<Position> GetMoves(Chessman[][] board) {
 		
-		ArrayList<Position> moves = new ArrayList<Position>(); ;
-		
-		int help =0;
+		ArrayList<Position> moves = new ArrayList<>();
+
+		int help;
 		if(color == SideColor.BLUE) help=-1;
 		else help =1;
 		

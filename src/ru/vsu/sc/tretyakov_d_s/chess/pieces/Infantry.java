@@ -8,7 +8,6 @@ import ru.vsu.sc.tretyakov_d_s.chess.SideColor;
 
 public class Infantry extends Chessman {
 
-	public boolean startPosition= true;
 	public Infantry(SideColor col , int x , int y) {
 		color =col;
 		pos= new Position(x ,y);
@@ -24,16 +23,15 @@ public class Infantry extends Chessman {
 	
 	public ArrayList<Position> GetMoves(Chessman[][] board) {
 
-
 		ArrayList<Position> moves = new ArrayList<>();
 
-		int movesRight = 9 - this.pos.x;
+		int movesRight = 7 - this.pos.x;
 		int movesLeft = this.pos.x;
 		int movesUp = this.pos.y;
-		int movesDown = 10 - this.pos.y;
+		int movesDown = this.pos.y;
 		int i = 0;
 
-		while(movesUp>0 ) {
+		while(movesUp>0) {
 
 			movesUp--;
 			i++;
@@ -71,7 +69,7 @@ public class Infantry extends Chessman {
 
 		i = 0;
 
-		while(movesLeft>2) {
+		while(movesLeft>2 ) {
 
 			movesLeft--;
 			i++;
@@ -104,6 +102,81 @@ public class Infantry extends Chessman {
 			}
 		}
 
+		//NE
+		i = 1;
+
+		while(this.pos.x+i <= 7 && this.pos.y-i >=0 ) {
+
+			if(board[pos.x+i][pos.y-i] == null){
+				moves.add(new Position(this.pos.x+i ,this.pos.y-i));
+
+			}
+
+			if(board[pos.x+i][pos.y-i] != null) {
+				if(board[this.pos.x+i][this.pos.y-i].color != this.color) {
+					moves.add(new Position(this.pos.x+i ,this.pos.y-i));
+				}
+				break;
+			}
+			i++;
+		}
+
+		//NW
+		i = 1;
+		while(this.pos.x-i >= 0 && this.pos.y-i >=0 ) {
+
+			if(board[pos.x-i][pos.y-i] == null){
+				moves.add(new Position(this.pos.x-i ,this.pos.y-i));
+
+			}
+
+			if(board[pos.x-i][pos.y-i] != null) {
+				if(board[this.pos.x-i][this.pos.y-i].color != this.color) {
+					moves.add(new Position(this.pos.x-i ,this.pos.y-i));
+				}
+				break;
+			}
+			i++;
+		}
+
+		//SE
+		i = 1;
+		while(this.pos.x+i <= 7 && this.pos.y+i <=7 ) {
+
+			if(board[pos.x+i][pos.y+i] == null){
+				moves.add(new Position(this.pos.x+i ,this.pos.y+i));
+
+			}
+
+			if(board[pos.x+i][pos.y+i] != null) {
+				if(board[this.pos.x+i][this.pos.y+i].color != this.color) {
+					moves.add(new Position(this.pos.x+i ,this.pos.y+i));
+				}
+				break;
+			}
+			i++;
+		}
+
+		//SW
+		i = 1;
+
+		while(this.pos.x-i >= 0 && this.pos.y+i <=1 ) {
+
+			if(board[pos.x-i][pos.y+i] == null){
+				moves.add(new Position(this.pos.x-i ,this.pos.y+i));
+
+			}
+
+			if(board[pos.x-i][pos.y+i] != null) {
+				if(board[this.pos.x-i][this.pos.y+i].color != this.color) {
+					moves.add(new Position(this.pos.x-i ,this.pos.y+i));
+				}
+				break;
+			}
+			i++;
+		}
+
 		return moves;
+
 	}
 }

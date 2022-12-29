@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.Objects;
 
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
@@ -85,8 +86,7 @@ public abstract class GamePanel extends JPanel{
 		g.fillOval(focus.x*SQUARE_SIZE, focus.y*SQUARE_SIZE,SQUARE_SIZE , SQUARE_SIZE);
 		for(int i=0 ; i<piecesBoard.length ;i++) {
 			for(int j=0 ; j<piecesBoard[i].length;j++) {
-				if(piecesBoard[i][j]==null) continue;
-				else {
+				if(piecesBoard[i][j]!=null) {
 					g.drawImage(imgTable[piecesBoard[i][j].imgSrc],  i*SQUARE_SIZE,
 							j*SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE , null);
 				}
@@ -209,38 +209,38 @@ public abstract class GamePanel extends JPanel{
 		try {
 			String source= "/ru/vsu/sc/tretyakov_d_s/resources/";
 
-			imgTable[1]  = ImageIO.read(getClass().getResource(source+"AirB.png"));
-			imgTable[12]  = ImageIO.read(getClass().getResource(source+"AirR.png"));
+			imgTable[1]  = ImageIO.read(Objects.requireNonNull(getClass().getResource(source + "AirB.png")));
+			imgTable[12]  = ImageIO.read(Objects.requireNonNull(getClass().getResource(source + "AirR.png")));
 
-			imgTable[2]  = ImageIO.read(getClass().getResource(source+"AAGB.png"));
-			imgTable[13]  = ImageIO.read(getClass().getResource(source+"AAGR.png"));
+			imgTable[2]  = ImageIO.read(Objects.requireNonNull(getClass().getResource(source + "AAGB.png")));
+			imgTable[13]  = ImageIO.read(Objects.requireNonNull(getClass().getResource(source + "AAGR.png")));
 
-			imgTable[3]   = ImageIO.read(getClass().getResource(source+"AB.png"));
-			imgTable[14]  = ImageIO.read(getClass().getResource(source+"AR.png"));
+			imgTable[3]   = ImageIO.read(Objects.requireNonNull(getClass().getResource(source + "AB.png")));
+			imgTable[14]  = ImageIO.read(Objects.requireNonNull(getClass().getResource(source + "AR.png")));
 
-			imgTable[4]  = ImageIO.read(getClass().getResource(source+"CB.png"));
-			imgTable[15]  = ImageIO.read(getClass().getResource(source+"CR.png"));
+			imgTable[4]  = ImageIO.read(Objects.requireNonNull(getClass().getResource(source + "CB.png")));
+			imgTable[15]  = ImageIO.read(Objects.requireNonNull(getClass().getResource(source + "CR.png")));
 
-			imgTable[5]  = ImageIO.read(getClass().getResource(source+"EB.png"));
-			imgTable[16]  = ImageIO.read(getClass().getResource(source+"ER.png"));
+			imgTable[5]  = ImageIO.read(Objects.requireNonNull(getClass().getResource(source + "EB.png")));
+			imgTable[16]  = ImageIO.read(Objects.requireNonNull(getClass().getResource(source + "ER.png")));
 
-			imgTable[6]  = ImageIO.read(getClass().getResource(source+"HB.png"));
-			imgTable[17]  = ImageIO.read(getClass().getResource(source+"HR.png"));
+			imgTable[6]  = ImageIO.read(Objects.requireNonNull(getClass().getResource(source + "HB.png")));
+			imgTable[17]  = ImageIO.read(Objects.requireNonNull(getClass().getResource(source + "HR.png")));
 
-			imgTable[7]  = ImageIO.read(getClass().getResource(source+"InB.png"));
-			imgTable[18]  = ImageIO.read(getClass().getResource(source+"InR.png"));
+			imgTable[7]  = ImageIO.read(Objects.requireNonNull(getClass().getResource(source + "InB.png")));
+			imgTable[18]  = ImageIO.read(Objects.requireNonNull(getClass().getResource(source + "InR.png")));
 
-			imgTable[8]  = ImageIO.read(getClass().getResource(source+"MB.png"));
-			imgTable[19]  = ImageIO.read(getClass().getResource(source+"MR.png"));
+			imgTable[8]  = ImageIO.read(Objects.requireNonNull(getClass().getResource(source + "MB.png")));
+			imgTable[19]  = ImageIO.read(Objects.requireNonNull(getClass().getResource(source + "MR.png")));
 
-			imgTable[9]  = ImageIO.read(getClass().getResource(source+"MSLB.png"));
-			imgTable[20]  = ImageIO.read(getClass().getResource(source+"MSLR.png"));
+			imgTable[9]  = ImageIO.read(Objects.requireNonNull(getClass().getResource(source + "MSLB.png")));
+			imgTable[20]  = ImageIO.read(Objects.requireNonNull(getClass().getResource(source + "MSLR.png")));
 
-			imgTable[10]  = ImageIO.read(getClass().getResource(source+"NB.png"));
-			imgTable[21]  = ImageIO.read(getClass().getResource(source+"NR.png"));
+			imgTable[10]  = ImageIO.read(Objects.requireNonNull(getClass().getResource(source + "NB.png")));
+			imgTable[21]  = ImageIO.read(Objects.requireNonNull(getClass().getResource(source + "NR.png")));
 
-			imgTable[11]  = ImageIO.read(getClass().getResource(source+"TB.png"));
-			imgTable[22]  = ImageIO.read(getClass().getResource(source+"TR.png"));
+			imgTable[11]  = ImageIO.read(Objects.requireNonNull(getClass().getResource(source + "TB.png")));
+			imgTable[22]  = ImageIO.read(Objects.requireNonNull(getClass().getResource(source + "TR.png")));
 			
 
 		}
@@ -258,8 +258,7 @@ public abstract class GamePanel extends JPanel{
 	         public void mousePressed(MouseEvent me) { 
 	        	 int tempX =me.getX()/SQUARE_SIZE;
 	        	 int tempY =me.getY()/SQUARE_SIZE;
-	        	 if((piecesBoard[tempX][tempY]==null && selected==null) || !enabled) return;
-	        	 else if(selected==null) {
+	        	 if(selected==null) {
 	            	 selected =piecesBoard[tempX][tempY];
 	            	 if(selected.color==SideColor.BLUE && !blueMove) {
 	            		 selected=null;

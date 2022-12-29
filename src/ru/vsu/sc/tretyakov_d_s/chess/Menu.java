@@ -29,8 +29,8 @@ public class Menu extends JFrame {
 		menuPanel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
-        c.weightx = 1;
-        c.weighty = .25;
+        c.weightx = 10;
+        c.weighty = 0.25;
         c.insets = new Insets(15, 40, 15, 40);
         c.gridwidth = GridBagConstraints.REMAINDER;
         c.fill = GridBagConstraints.BOTH;
@@ -42,8 +42,8 @@ public class Menu extends JFrame {
 		name.setFont(f);
 		play.setFont(f);
 		
-		menuPanel.setBackground(Color.decode("#bb4446"));
-		play.setBackground(Color.decode("#f1e4c1"));
+		menuPanel.setBackground(new Color(0xB46E6E));
+		play.setBackground(new Color(0xC73636));
 		play.setOpaque(true);
 
 		

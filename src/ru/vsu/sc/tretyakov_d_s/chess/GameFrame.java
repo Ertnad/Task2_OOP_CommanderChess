@@ -9,13 +9,11 @@ import ru.vsu.sc.tretyakov_d_s.chess.panels.GamePanel;
 public class GameFrame extends JFrame  {
 
 
-	private GamePanel panel;
 	public GameFrame(GamePanel gamePanel){
 		super("Командирские Шахматы");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		panel = gamePanel;
-		this.add(panel);
+		this.add(gamePanel);
 
 
 		this.setJMenuBar(new JMenuBar());
